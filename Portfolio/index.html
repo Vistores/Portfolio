@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Моє портфоліо</title>
+</head>
+<body>
+
+    <header>
+        <h1>Володимир</h1>
+        <h2>(Докзя)</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Мої роботи</a></li>
+                <li><a href="about.html">Про мене</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="categories">
+            <div class="category" onmouseover="showCategoryActions(1)" onmouseout="hideCategoryActions(1)">
+                <a href="category1.html">
+                    <img class="category-image" src="images/work1.png" alt="Категорія 1">
+                    <div class="category-info">
+                        <div class="category-title">З "нуля"</div>
+                        <div class="category-actions" id="categoryActions1" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(1, event)">🤍 0</span>
+                            <span class="share" onclick="event.stopPropagation();">➤</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="category" onmouseover="showCategoryActions(2)" onmouseout="hideCategoryActions(2)">
+                <a href="category2.html">
+                    <img class="category-image" src="images/work2.png" alt="Категорія 2">
+                    <div class="category-info">
+                        <div class="category-title">Найкращі</div>
+                        <div class="category-actions" id="categoryActions2" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(2, event)">🤍 0</span>
+                            <span class="share" onclick="event.stopPropagation();">➤</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="category" onmouseover="showCategoryActions(3)" onmouseout="hideCategoryActions(3)">
+                <a href="category3.html">
+                    <img class="category-image" src="images/work3.png" alt="Категорія 3">
+                    <div class="category-info">
+                        <div class="category-title">З моїми стилями</div>
+                        <div class="category-actions" id="categoryActions3" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(3, event)">🤍 0</span>
+                            <span class="share" onclick="event.stopPropagation();">➤</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Ваше ім'я. Усі права захищено.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
