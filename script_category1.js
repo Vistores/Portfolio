@@ -1,3 +1,5 @@
+// script_category1.js
+
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
 
 function showCategoryActions(categoryId) {
@@ -54,4 +56,29 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
+    // Відновлення лайків після перезавантаження сторінки
+    Object.keys(categoryLikes).forEach(categoryId => {
+        const { count, liked } = categoryLikes[categoryId];
+        updateLikeCount(categoryId, count, liked);
+    });
+
+    // Додавання обробника події для підгрузки категорій по скролу
+    window.addEventListener('scroll', function () {
+        const lastCategory = document.querySelector('.category:last-child');
+        const lastCategoryOffset = lastCategory.offsetTop + lastCategory.clientHeight;
+        const pageOffset = window.pageYOffset + window.innerHeight;
+
+        // Перевірте, чи досягнуто дно сторінки
+        if (pageOffset > lastCategoryOffset - 200) {
+            // Викликати функцію для підгрузки нових категорій або змінити існуючі
+            loadMoreCategories();
+        }
+    });
 });
+
+function loadMoreCategories() {
+    // Тут ви можете викликати AJAX-запит або додати нові категорії в DOM
+    // Наприклад, додайте нові елементи `.category` з іншими зображеннями та інформацією
+    // Не забудьте також оновити лайки для нових категорій, якщо вони є
+}

@@ -1,3 +1,5 @@
+// script.js
+
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
 
 function showCategoryActions(categoryId) {
@@ -58,4 +60,37 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
         document.body.removeChild(tempTextArea);
         alert('Посилання скопійовано!');
     });
+});
+
+// Відновлення лайків після перезавантаження сторінки
+document.addEventListener('DOMContentLoaded', function () {
+    Object.keys(categoryLikes).forEach(categoryId => {
+        const { count, liked } = categoryLikes[categoryId];
+        updateLikeCount(categoryId, count, liked);
+    });
+});
+
+// Додавання підгрузки по скролу для існуючих компонентів
+let loadMoreContentFlag = true;
+
+function loadMoreContent() {
+    if (loadMoreContentFlag) {
+        // Ваш код для завантаження додаткового контенту
+        // Наприклад, AJAX-запит або додавання нових елементів в DOM
+        const existingContent = document.querySelectorAll('.category');
+        existingContent.forEach(category => {
+            // Ваш код для виведення існуючого контенту
+        });
+        loadMoreContentFlag = false;
+    }
+}
+
+window.addEventListener('scroll', function () {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    if (scrollTop + windowHeight >= documentHeight * 0.8) {
+        loadMoreContent();
+    }
 });
