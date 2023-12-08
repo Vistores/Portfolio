@@ -45,8 +45,6 @@ function openImageConfirmation(imagePath) {
     }
 }
 
-// Залиште початок коду незмінним
-
 document.addEventListener('DOMContentLoaded', function () {
     const categories = document.querySelectorAll('.category');
     const totalCategories = categories.length;
@@ -72,7 +70,16 @@ document.addEventListener('DOMContentLoaded', function () {
             showCategories();
         }
     });
-  
+
+    // Додаємо обробник події для кожного зображення в категорії
+    categories.forEach((category, index) => {
+        const image = category.querySelector('.category-image');
+        image.addEventListener('click', function () {
+            const imagePath = image.src;
+            openImageConfirmation(imagePath);
+        });
+    });
+
     Object.keys(categoryLikes).forEach(categoryId => {
         const { count, liked } = categoryLikes[categoryId];
         updateLikeCount(categoryId, count, liked);
