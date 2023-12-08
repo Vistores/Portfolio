@@ -1,6 +1,6 @@
 // script_category1.js
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
-let visibleCategories = 3; // Початкова кількість видимих категорій
+let visibleCategories = 4; // Початкова кількість видимих категорій
 let isLoading = false;
 
 function showCategoryActions(categoryId) {
@@ -48,7 +48,7 @@ function openImageConfirmation(imagePath) {
 document.addEventListener('DOMContentLoaded', function () {
     const categories = document.querySelectorAll('.category');
     const totalCategories = categories.length;
-    const categoriesPerPage = 3;
+    const categoriesPerPage = 4;
     let visibleCategories = categoriesPerPage;
 
     function showCategories() {
@@ -113,12 +113,12 @@ function loadMoreCategories() {
     const categories = document.querySelectorAll('.category');
     const totalCategories = categories.length;
 
-    for (let i = visibleCategories; i < visibleCategories + 3 && i < totalCategories; i++) {
+    for (let i = visibleCategories; i < visibleCategories + 4 && i < totalCategories; i++) {
         const category = categories[i];
         category.classList.add('visible');
     }
 
-    visibleCategories += 3;
+    visibleCategories += 4;
 
     isLoading = false;
 }
