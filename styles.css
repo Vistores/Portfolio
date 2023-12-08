@@ -1,0 +1,181 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(#000000, #00383b);
+    color: #ccc; /* Колір тексту */
+    font-family: 'Dancing Script', cursive;
+    overflow-y: scroll;
+    scroll-behavior: smooth; /* Додавання плавної прокрутки */
+}
+
+header {
+    background-color: #045b58; 
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav {
+    background-color: #333;
+    color #fff;
+    text-align: center;
+    height: 45px;
+}
+
+nav li {
+    margin-right: 0px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: auto;
+    padding: auto;
+    object-position: center;
+    font-size: 30px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 0px;
+}
+
+nav a:hover {
+    background-color: rgba(1, 1, 1, 0.3);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+main {
+    flex: 1;
+    min-height: 100vh;
+}
+
+nav .active {
+    background-color: #309b9b;
+    background-size: auto;
+    border: double;
+    border-color: #f36400;
+}
+
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.category {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    border: 2px solid transparent; /* Додано рамку для обводки при наведенні */
+    transition: border 0.1s ease-in-out;
+
+}
+
+.category:hover {
+    border: 2px solid #cc5500; /* Обводка при наведенні */
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: filter 0.2s ease-in-out;
+}
+
+.category-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.category-title {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+}
+
+.category-actions {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 10px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(100%);
+}
+
+.category-actions span {
+    margin: 0px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.category:hover .category-title,
+.category:hover .category-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 768px) {
+    .categories {
+        grid-template-columns: 1fr;
+    }
+
+    .category {
+        width: 100%;
+    }
+}
+
+footer {
+    background-color: #009696; 
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.logo-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Щоб лого було видимим навіть над іншими елементами */
+}
+
+.logo-container img {
+    width: 100px; 
+    height: auto;
+    border-radius: 100%; 
+    border: 1px solid #000000; 
+}
+
+#gallery .category:not(.visible) {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
