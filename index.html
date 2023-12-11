@@ -9,21 +9,12 @@
     <link rel="icon" href="images/UNTITLED.ico" type="image/x-icon">
     <title>Категорії моїх робіт</title>
 
-    <style>
-        @font-face {
-            font-family: 'Studio Script CTT';
-            src: url('./StudioScriptCTT.ttf') format('truetype'); /* Використовуйте ./ для відносного шляху */
-            /* Додайте інші параметри шрифту, якщо необхідно */
-        }
-    </style>
-
 </head>
 <body>
-<!-- Додайте це перед закриваючим тегом </body> -->
-<div class="modal" id="myModal">
+<div id="myModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <p id="modalMessage">Посилання скопійовано!</p>
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modalMessage"></p>
     </div>
 </div>
 
