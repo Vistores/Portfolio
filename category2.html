@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_category1.css"> <!-- Змініть шлях належним чином -->
+    <link rel="shortcut icon" href="images/UNTITLED.ico" type="image/x-icon">
+    <link rel="icon" href="images/UNTITLED.ico" type="image/x-icon">
+    <title>Найкращі</title>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="images\086.png" alt="'Лого'">
+    </div>
+    <header>
+        <h1>Найкращі роботи.</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Мої роботи</a></li>
+                <li><a href="about.html">Про мене</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="gallery">
+            <div class="category" onmouseover="showCategoryActions(1)" onmouseout="hideCategoryActions(1)">
+                <a href="#" onclick="openImageConfirmation('images/image2-1.png');">
+                    <img class="category-image" src="images/image2-1.png" alt="Категорія 1">
+                    <div class="category-info">
+                        <div class="category-title">1</div>
+                        <div class="category-actions" id="categoryActions1" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(1, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(2)" onmouseout="hideCategoryActions(2)">
+                <a href="#" onclick="openImageConfirmation('images/image2-2.png');">
+                    <img class="category-image" src="images/image2-2.png" alt="Категорія 2">
+                    <div class="category-info">
+                        <div class="category-title">2</div>
+                        <div class="category-actions" id="categoryActions2" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(2, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(3)" onmouseout="hideCategoryActions(3)">
+                <a href="#" onclick="openImageConfirmation('images/image2-3.png');">
+                    <img class="category-image" src="images/image2-3.png" alt="Категорія 3">
+                    <div class="category-info">
+                        <div class="category-title">3</div>
+                        <div class="category-actions" id="categoryActions3" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(3, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(4)" onmouseout="hideCategoryActions(4)">
+                <a href="#" onclick="openImageConfirmation('images/image2-4.png');">
+                    <img class="category-image" src="images/image2-4.png" alt="Категорія 4">
+                    <div class="category-info">
+                        <div class="category-title">4</div>
+                        <div class="category-actions" id="categoryActions4" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(4, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(5)" onmouseout="hideCategoryActions(5)">
+                <a href="#" onclick="openImageConfirmation('images/image2-5.png');">
+                    <img class="category-image" src="images/image2-5.png" alt="Категорія 5">
+                    <div class="category-info">
+                        <div class="category-title">5</div>
+                        <div class="category-actions" id="categoryActions5" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(5, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(6)" onmouseout="hideCategoryActions(6)">
+                <a href="#" onclick="openImageConfirmation('images/image2-6.png');">
+                    <img class="category-image" src="images/image2-6.png" alt="Категорія 6">
+                    <div class="category-info">
+                        <div class="category-title">6</div>
+                        <div class="category-actions" id="categoryActions6" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(6, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(7)" onmouseout="hideCategoryActions(7)">
+                <a href="#" onclick="openImageConfirmation('images/image2-7.png');">
+                    <img class="category-image" src="images/image2-7.png" alt="Категорія 7">
+                    <div class="category-info">
+                        <div class="category-title">7</div>
+                        <div class="category-actions" id="categoryActions7" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(7, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(8)" onmouseout="hideCategoryActions(8)">
+                <a href="#" onclick="openImageConfirmation('images/image2-8.png');">
+                    <img class="category-image" src="images/image2-8.png" alt="Категорія 8">
+                    <div class="category-info">
+                        <div class="category-title">8</div>
+                        <div class="category-actions" id="categoryActions8" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(8, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(9)" onmouseout="hideCategoryActions(9)">
+                <a href="#" onclick="openImageConfirmation('images/image2-9.png');">
+                    <img class="category-image" src="images/image2-9.png" alt="Категорія 9">
+                    <div class="category-info">
+                        <div class="category-title">9</div>
+                        <div class="category-actions" id="categoryActions9" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(9, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(10)" onmouseout="hideCategoryActions(10)">
+                <a href="#" onclick="openImageConfirmation('images/image2-10.png');">
+                    <img class="category-image" src="images/image2-10.png" alt="Категорія 10">
+                    <div class="category-info">
+                        <div class="category-title">10</div>
+                        <div class="category-actions" id="categoryActions10" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(10, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(11)" onmouseout="hideCategoryActions(11)">
+                <a href="#" onclick="openImageConfirmation('images/image2-11.png');">
+                    <img class="category-image" src="images/image2-11.png" alt="Категорія 11">
+                    <div class="category-info">
+                        <div class="category-title">11</div>
+                        <div class="category-actions" id="categoryActions11" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(11, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(12)" onmouseout="hideCategoryActions(12)">
+                <a href="#" onclick="openImageConfirmation('images/image2-12.png');">
+                    <img class="category-image" src="images/image2-12.png" alt="Категорія 12">
+                    <div class="category-info">
+                        <div class="category-title">12</div>
+                        <div class="category-actions" id="categoryActions12" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(12, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(13)" onmouseout="hideCategoryActions(13)">
+                <a href="#" onclick="openImageConfirmation('images/image2-13.png');">
+                    <img class="category-image" src="images/image2-13.png" alt="Категорія 13">
+                    <div class="category-info">
+                        <div class="category-title">13</div>
+                        <div class="category-actions" id="categoryActions13" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(13, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(14)" onmouseout="hideCategoryActions(14)">
+                <a href="#" onclick="openImageConfirmation('images/image2-14.png');">
+                    <img class="category-image" src="images/image2-14.png" alt="Категорія 14">
+                    <div class="category-info">
+                        <div class="category-title">14</div>
+                        <div class="category-actions" id="categoryActions14" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(14, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(15)" onmouseout="hideCategoryActions(15)">
+                <a href="#" onclick="openImageConfirmation('images/image2-15.png');">
+                    <img class="category-image" src="images/image2-15.png" alt="Категорія 15">
+                    <div class="category-info">
+                        <div class="category-title">15</div>
+                        <div class="category-actions" id="categoryActions15" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(15, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(16)" onmouseout="hideCategoryActions(16)">
+                <a href="#" onclick="openImageConfirmation('images/image2-16.png');">
+                    <img class="category-image" src="images/image2-16.png" alt="Категорія 16">
+                    <div class="category-info">
+                        <div class="category-title">16</div>
+                        <div class="category-actions" id="categoryActions16" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(16, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(17)" onmouseout="hideCategoryActions(17)">
+                <a href="#" onclick="openImageConfirmation('images/image2-17.png');">
+                    <img class="category-image" src="images/image2-17.png" alt="Категорія 17">
+                    <div class="category-info">
+                        <div class="category-title">17</div>
+                        <div class="category-actions" id="categoryActions17" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(17, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(18)" onmouseout="hideCategoryActions(18)">
+                <a href="#" onclick="openImageConfirmation('images/image2-18.png');">
+                    <img class="category-image" src="images/image2-18.png" alt="Категорія 18">
+                    <div class="category-info">
+                        <div class="category-title">18</div>
+                        <div class="category-actions" id="categoryActions18" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(18, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(19)" onmouseout="hideCategoryActions(19)">
+                <a href="#" onclick="openImageConfirmation('images/image2-19.png');">
+                    <img class="category-image" src="images/image2-19.png" alt="Категорія 19">
+                    <div class="category-info">
+                        <div class="category-title">19</div>
+                        <div class="category-actions" id="categoryActions19" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(19, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="category" onmouseover="showCategoryActions(20)" onmouseout="hideCategoryActions(20)">
+                <a href="#" onclick="openImageConfirmation('images/image2-20.png');">
+                    <img class="category-image" src="images/image2-20.png" alt="Категорія 20">
+                    <div class="category-info">
+                        <div class="category-title">20</div>
+                        <div class="category-actions" id="categoryActions20" onclick="event.stopPropagation();">
+                            <span class="like" onclick="toggleLikeCategory(20, event)">🤍 0</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Додайте інші блоки категорій за потребою -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Докзя. Усі права захищено.</p>
+    </footer>
+
+    <script src="script_category1.js"></script> <!-- Змініть шлях належним чином -->
+</body>
+</html>

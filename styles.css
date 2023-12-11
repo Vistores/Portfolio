@@ -1,0 +1,286 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Studio Script CTT', Arial, sans-serif; /* Підключений шрифт */
+    line-height: 1.6;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #1a1a1a;
+    padding: 15px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px;
+    font-size: 2em;
+    color: #00bcd4;
+}
+
+h2 {
+    margin-top: 5px;
+    font-size: 1.5em;
+    color: #00bcd4;
+}
+
+nav {
+    background-color: #333;
+    padding: 20px; /* Збільшено внутрішні відступи для "панельок" */
+    text-align: center; /* Вирівнювання по центру */
+
+    /* Змінено на внутрішні блоки для "панельок" */
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+/* Змінено стилі для "панельок" */
+nav li {
+    margin-right: 20px;
+    padding: 10px 20px; /* Внутрішні відступи "панельки" */
+    border-radius: 5px; /* Закруглені кути "панельки" */
+}
+
+/* Змінено стилі для тексту у "панельках" */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #3498db;
+}
+
+/* Змінено стилі для активної "панельки" */
+nav li.active {
+    background-color: #ff7f00; /* Змінено колір фону для активної "панельки" */
+}
+
+nav li.active a {
+    color: #fff; /* Змінено колір тексту для активної "панельки" */
+}
+
+/* Main content styles */
+main {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #00bcd4;
+}
+/* styles.css */
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Вирівнювання по центру */
+}
+
+.category {
+    width: calc(23.33% - 20px);
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #00bcd4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, transform 0.3s; /* Додано анімацію для змін ефекту при наведенні */
+}
+
+/* Додано стилі для ефекту при наведенні */
+.category:hover {
+    border-color: orange; /* Ярко-оранжевий колір */
+    transform: scale(1.05); /* Збільшення розміру на 5% при наведенні */
+}
+
+.category-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #00bcd4;
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    text-decoration: none; /* Видалено підкреслення */
+}
+
+.category-title {
+    font-weight: bold;
+    color: #00bcd4;
+    max-height: 40px;
+    overflow: hidden;
+    margin: 10px 0 0 0; /* Змінено маржу */
+    text-align: center;
+    font-size: 1.2em; /* Збільшено розмір шрифту */
+    text-decoration: none; /* Видалено підкреслення */
+}
+
+.category-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+    text-decoration: none; /* Видалено підкреслення */
+}
+
+.category-actions {
+    text-decoration: none; /* Видалено підкреслення */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(26, 26, 26, 0.9);
+    box-sizing: border-box;
+}
+
+.like,
+.share {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #00bcd4;
+    font-size: 2.2em; /* Збільшено розмір шрифту */
+}
+
+.like i,
+.share i {
+    margin-right: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    width: 300px; /* Змініть розмір вікна за потребою */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Адаптивні стилі для темного фону та бірюзових кольорів */
+@media only screen and (max-width: 600px) {
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .category {
+        width: calc(50% - 20px);
+    }
+
+    .category-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+a {
+    text-decoration: none; /* Видалити підкреслення для всіх посилань */
+}
+
+nav a {
+    text-decoration: none !important; /* Видалити підкреслення для посилань у навігаційному меню */
+}
+
+.category-title,
+.like,
+.share {
+    text-decoration: none !important; /* Видалити підкреслення для заголовків категорій, лайків і поділитися */
+}
+
+/* Оновлені стилі для "лого" та "лого-контейнера" */
+.logo-container {
+    position: fixed; /* Зафіксована позиція */
+    bottom: 10px; /* Відстань від нижнього краю */
+    right: 10px; /* Відстань від правого краю */
+    z-index: 1000; /* Забезпечте велике значення індексу z для виведення поверх інших елементів */
+}
+
+.logo-container img {
+    max-width: 85px; /* Максимальна ширина зображення */
+    height: 85px; /* Автоматична висота для зображення */
+    border-radius: 100%; /* Закруглені кути для круглого зображення */
+    box-shadow: 0 6px 8px rgba(88, 23, 0, 0.1); /* Тінь для стилізації */
+}
+
+/* Modal styles */
+.modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #00bcd4;
+    width: 80%;
+}
+
+.close {
+    color: #00bcd4;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #3498db;
+    text-decoration: none;
+    cursor: pointer;
+}
