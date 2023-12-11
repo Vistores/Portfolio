@@ -1,3 +1,26 @@
+/* Стилі для категорій на мобільних пристроях */
+@media screen and (max-width: 768px) {
+    .categories {
+        grid-template-columns: repeat(3, 1fr); /* Три категорії в ряду */
+    }
+
+    .category {
+        width: calc(33.33% - 20px); /* Задаємо ширину категорії для того, щоб утримувати три в ряду */
+        max-width: none;
+        margin-bottom: 20px; /* Відступ між категоріями */
+    }
+
+    .category-info {
+        opacity: 1;
+    }
+
+    .category-title,
+    .category-actions {
+        transform: translateX(0);
+    }
+}
+
+/* Інші стилі залишаються незмінними */
 body {
     display: flex;
     flex-direction: column;
@@ -8,7 +31,7 @@ body {
     font-family: 'Dancing Script', cursive;
     overflow-y: scroll;
     scroll-behavior: smooth; /* Додавання плавної прокрутки */
-    overflow-x: hidden; /* Додано для усунення горизонтального скролу на мобільних пристроях */
+    overflow-x: hidden; /* Додано для усунення горизонтального скрола на мобільних пристроях */
 }
 
 header {
@@ -136,30 +159,6 @@ nav .active {
     opacity: 1;
     transform: translateX(0);
 }
-
-
-/* Стилі для категорій на мобільних пристроях */
-@media screen and (max-width: 768px) {
-    .categories {
-        grid-template-columns: 3fr; 
-    }
-
-    .category {
-        width: 100%;
-        max-width: none;
-        margin-bottom: 20px; /* Відступ між категоріями */
-    }
-
-    .category-info {
-        opacity: 1;
-    }
-
-    .category-title,
-    .category-actions {
-        transform: translateX(0);
-    }
-}
-
 
 footer {
     background-color: #009696; 
