@@ -108,21 +108,31 @@ window.addEventListener('scroll', function () {
     }
 });
 
-function showModal(message) {
-    const modalMessage = document.getElementById('modalMessage');
-    modalMessage.innerText = message;
-    modal.style.display = 'block';
+document.querySelectorAll('.share').forEach((shareBtn, index) => {
+    shareBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-    // Закриваємо модальне вікно через 2 секунди
-    setTimeout(() => {
-        closeModal();
-    }, 2000);
-}
+        const categoryFileName = `category${index + 1}.html`;
+        const currentPath = window.location.href.replace('index.html', '');
+        const categoryPageURL = `${currentPath}${categoryFileName}`;
 
-function closeModal() {
-    modal.style.display = 'none';
-}
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = categoryPageURL;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
 
-const closeBtn = document.getElementsByClassName('close')[0];
-closeBtn.addEventListener('click', closeModal);
+        // Виводимо модальне вікно при копіюванні посилання
+        showModal('Посилання скопійовано!');
+    });
+});
+
+// Додаємо обробник події копіювання до документу
+document.addEventListener('copy', () => {
+    // Виводимо модальне вікно при копіюванні (можна також використовувати ваш showModal)
+    alert('Посилання скопійовано!');
+});
+
 
