@@ -1,16 +1,17 @@
 /* Адаптовані стилі для .categories та .category на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
-        grid-template-columns: repeat(1, 1fr); /* Одна колонка на мобільних пристроях */
-        font-size: 16px; /* Зменште розмір шрифту для категорій */
-        grid-gap: 10px; /* Зменште відступ між категоріями */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        font-size: 16px;
     }
 
     .category {
-        max-width: none; /* Забороніть максимальну ширину, щоб категорії були на весь екран */
-        width: 100%; /* Зробіть ширину 100% */
+        width: calc(33.33% - 20px);
+        margin-bottom: 20px;
     }
-
+    
     header {
         padding: 5px 0;
         font-size: 20px;
