@@ -1,17 +1,5 @@
-/* Адаптовані стилі для .categories та .category на мобільних пристроях */
+/* Адаптовані стилі для header та nav на мобільних пристроях */
 @media screen and (max-width: 768px) {
-    .categories {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        font-size: 16px;
-    }
-
-    .category {
-        width: calc(33.33% - 20px);
-        margin-bottom: 20px;
-    }
-    
     header {
         padding: 5px 0;
         font-size: 20px;
@@ -154,7 +142,7 @@ nav .active {
 
 .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Використовуйте 100% для ширини колонки */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px;
     max-width: 1200px;
     margin: auto;
@@ -193,12 +181,8 @@ nav .active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.category:hover .category-info {
     opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .category-title,
