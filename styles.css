@@ -8,6 +8,7 @@ body {
     font-family: 'Dancing Script', cursive;
     overflow-y: scroll;
     scroll-behavior: smooth; /* Додавання плавної прокрутки */
+    overflow-x: hidden; /* Додано для усунення горизонтального скрола на мобільних пристроях */
 }
 
 header {
@@ -19,7 +20,7 @@ header {
 
 nav {
     background-color: #333;
-    color #fff;
+    color: #fff;
     text-align: center;
     height: 45px;
 }
@@ -63,7 +64,6 @@ nav .active {
     border-color: #f36400;
 }
 
-
 .categories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -79,13 +79,12 @@ nav .active {
     position: relative;
     overflow: hidden;
     max-width: 100%;
-    border: 2px solid transparent; /* Додано рамку для обводки при наведенні */
+    border: 2px solid transparent;
     transition: border 0.1s ease-in-out;
-
 }
 
 .category:hover {
-    border: 2px solid #cc5500; /* Обводка при наведенні */
+    border: 2px solid #cc5500;
 }
 
 .category-image {
@@ -105,25 +104,23 @@ nav .active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.category-title {
+.category:hover .category-info {
+    opacity: 1;
+}
+
+.category-title,
+.category-actions {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 15px;
     text-align: center;
     color: #fff;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    transform: translateY(-100%);
-}
-
-.category-actions {
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 10px;
-    text-align: center;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    transform: translateY(100%);
+    transition: opacity 0.5s ease-in-out, transform 0.6s ease-in-out;
+    transform: translateX(-100%);
 }
 
 .category-actions span {
@@ -136,16 +133,21 @@ nav .active {
 .category:hover .category-title,
 .category:hover .category-actions {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 @media screen and (max-width: 768px) {
     .categories {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 
     .category {
         width: 100%;
+        max-width: none;
+    }
+
+    .category-info {
+        opacity: 1;
     }
 }
 
@@ -160,7 +162,7 @@ footer {
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000; /* Щоб лого було видимим навіть над іншими елементами */
+    z-index: 1000;
 }
 
 .logo-container img {
@@ -178,4 +180,70 @@ footer {
 .visible {
     opacity: 1;
     transition: opacity 0.5s;
+}
+
+/* Модальне вікно стилі */
+#myModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(3, 4, 0, 0.3);
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeInOut 2s forwards;
+  z-index: 1000; /* Задайте високий z-index */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Закриваючий (X) кнопка */
+.close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ccc;
+}
+
+/* Додатковий стиль для тексту повідомлення */
+#modalMessage {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* Зробити текст видимим при наведенні на модальне вікно */
+#myModal:hover #modalMessage {
+  opacity: 1;
+}
+
+/* Стилі для анімації */
+.fade {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
