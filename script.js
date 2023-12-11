@@ -108,10 +108,6 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Додайте цей код для модального вікна
-const modalMain = document.getElementById('myModalMain');
-const closeBtnMain = modalMain.querySelector('.close');
-
 function showModal(message) {
     const modalMessage = document.getElementById('modalMessage');
     modalMessage.innerText = message;
