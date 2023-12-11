@@ -2,13 +2,14 @@ let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
 
 function showCategoryActions(categoryId) {
     const actions = document.getElementById(`categoryActions${categoryId}`);
-    actions.style.opacity = '1';
+    actions.classList.add('visible');
 }
 
 function hideCategoryActions(categoryId) {
     const actions = document.getElementById(`categoryActions${categoryId}`);
-    actions.style.opacity = '0';
+    actions.classList.remove('visible');
 }
+
 
 function toggleLikeCategory(categoryId, event) {
     event.preventDefault();
