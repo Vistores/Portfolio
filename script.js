@@ -10,7 +10,6 @@ function hideCategoryActions(categoryId) {
     actions.classList.remove('visible');
 }
 
-
 function toggleLikeCategory(categoryId, event) {
     event.preventDefault();
 
@@ -36,6 +35,21 @@ function updateLikeCount(categoryId, count, liked) {
     localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
 }
 
+// Функція для відображення модального вікна з повідомленням
+function showModal(message) {
+    const modal = document.getElementById('myModal');
+    const modalMessage = document.getElementById('modalMessage');
+
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+}
+
+// Функція для закриття модального вікна
+function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+}
+
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
     shareBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -52,6 +66,7 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
         document.execCommand('copy');
         document.body.removeChild(tempTextArea);
 
+        // Виводимо модальне вікно при копіюванні посилання
         showModal('Посилання скопійовано!');
     });
 });
@@ -132,7 +147,5 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
 // Додаємо обробник події копіювання до документу
 document.addEventListener('copy', () => {
     // Виводимо модальне вікно при копіюванні (можна також використовувати ваш showModal)
-    alert('Посилання скопійовано!');
+    showModal('Посилання скопійовано!');
 });
-
-
