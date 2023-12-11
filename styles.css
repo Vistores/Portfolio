@@ -1,5 +1,8 @@
 /* Адаптовані стилі для header та nav на мобільних пристроях */
 @media screen and (max-width: 768px) {
+    .categories {
+        font-size: 1.5rem; /* або будь-яке інше значення, яке вам підходить */
+    }
     header {
         padding: 5px 0;
         font-size: 20px;
