@@ -251,29 +251,30 @@ nav a {
 
 /* Modal styles */
 /* Стилі для модального вікна */
-.modal {
+#myModal {
     display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
 }
 
-.modal-content {
+#modalContent {
     background-color: #1a1a1a;
     color: #fff;
-    margin: 15% auto;
     padding: 20px;
     border: 1px solid #00bcd4;
     width: 80%;
-    position: relative;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
 }
 
-.close {
+#closeModal {
     color: #00bcd4;
     float: right;
     font-size: 28px;
@@ -281,9 +282,6 @@ nav a {
     cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
+#closeModal:hover {
     color: #3498db;
-    text-decoration: none;
-    cursor: pointer;
 }
