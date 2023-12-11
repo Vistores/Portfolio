@@ -142,7 +142,7 @@ nav .active {
 
 .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Використовуйте 100% для ширини колонки */
     grid-gap: 20px;
     max-width: 1200px;
     margin: auto;
@@ -155,9 +155,11 @@ nav .active {
     position: relative;
     overflow: hidden;
     max-width: 100%;
+    width: 100%; /* Зробіть ширину 100% */
     border: 2px solid transparent;
     transition: border 0.1s ease-in-out;
 }
+
 
 .category:hover {
     border: 2px solid #cc5500;
