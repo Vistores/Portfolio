@@ -160,7 +160,6 @@ nav .active {
     transition: border 0.1s ease-in-out;
 }
 
-
 .category:hover {
     border: 2px solid #cc5500;
 }
