@@ -1,11 +1,12 @@
 /* Стилі для категорій на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
-        grid-template-columns: repeat(1, 1fr); /* Одна категорія в ряду на мобільних пристроях */
+        grid-template-columns: repeat(3, 1fr); /* Три категорії в ряду на мобільних пристроях */
+        grid-gap: 10px; /* Відступ між категоріями */
     }
 
     .category {
-        width: calc(100% - 20px); /* Задаємо ширину категорії на 100% для відображення на весь екран */
+        width: calc(33.33% - 10px); /* Задаємо ширину категорії для того, щоб утримувати три в ряду */
         max-width: none;
         margin-bottom: 20px; /* Відступ між категоріями */
     }
@@ -21,6 +22,10 @@
     .category-title,
     .category-actions {
         transform: translateX(0); /* Залишаємо текст видимим при ховері */
+    }
+
+    body {
+        overflow-x: hidden; /* Відключаємо горизонтальний скрол для малих екранів */
     }
 }
 
