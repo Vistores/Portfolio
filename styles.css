@@ -274,3 +274,20 @@ footer {
         opacity: 1;
     }
 }
+
+/* Стилі для лайків */
+.category-actions .like {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Стилі для назв категорій */
+.category-title {
+    font-size: 24px;
+}
+
+/* Стилі для анімації лайків та назв категорій */
+.category-actions .like:hover,
+.category-title:hover {
+    color: #cc5500;
+}
