@@ -112,18 +112,21 @@ window.addEventListener('scroll', function () {
 const modalMain = document.getElementById('myModalMain');
 const closeBtnMain = modalMain.querySelector('.close');
 
-function showModalMain(message) {
-  const modalMessage = modalMain.querySelector('#modalMessage');
-  modalMessage.innerText = message;
-  modalMain.style.display = 'block';
+function showModal(message) {
+    const modalMessage = document.getElementById('modalMessage');
+    modalMessage.innerText = message;
+    modal.style.display = 'block';
 
-  setTimeout(() => {
-    closeModalMain();
-  }, 2000);
+    // Закриваємо модальне вікно через 2 секунди
+    setTimeout(() => {
+        closeModal();
+    }, 2000);
 }
 
-function closeModalMain() {
-  modalMain.style.display = 'none';
+function closeModal() {
+    modal.style.display = 'none';
 }
 
-closeBtnMain.addEventListener('click', closeModalMain);
+const closeBtn = document.getElementsByClassName('close')[0];
+closeBtn.addEventListener('click', closeModal);
+
