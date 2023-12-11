@@ -250,6 +250,7 @@ nav a {
 }
 
 /* Modal styles */
+/* Стилі для модального вікна */
 .modal {
     display: none;
     position: fixed;
@@ -274,9 +275,7 @@ nav a {
 
 .close {
     color: #00bcd4;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -286,4 +285,5 @@ nav a {
 .close:focus {
     color: #3498db;
     text-decoration: none;
+    cursor: pointer;
 }
