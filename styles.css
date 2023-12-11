@@ -155,12 +155,13 @@ nav .active {
 
 .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Оновлено auto-fill на auto-fit */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px;
-    max-width: 1200px;
+    max-width: 100%; /* Змінено з 1200px на 100% */
     margin: auto;
     justify-content: center;
     font-size: 30px;
+    overflow-x: hidden; /* Додано для усунення горизонтального скролу */
 }
 
 .category {
@@ -168,9 +169,10 @@ nav .active {
     position: relative;
     overflow: hidden;
     max-width: 100%;
-    width: 100%;
     border: 2px solid transparent;
     transition: border 0.1s ease-in-out;
+    box-sizing: border-box; /* Додано для врахування padding у .category */
+    padding: 10px; /* Додано padding для .category */
 }
 
 .category:hover {
