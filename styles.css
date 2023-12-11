@@ -1,68 +1,69 @@
 /* Стилі для категорій на мобільних пристроях */
-@/* Стилі для категорій на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
         display: flex;
-        flex-wrap: wrap; /* Змінюємо на flex контейнер, щоб елементи переходили на новий ряд при необхідності */
-        justify-content: space-between; /* Розташовуємо елементи між собою, щоб вони займали всю ширину екрана */
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     .category {
-        width: calc(33.33% - 10px); /* Задаємо ширину категорії для того, щоб утримувати три в ряду */
+        width: calc(33.33% - 10px);
         max-width: none;
-        margin-bottom: 20px; /* Відступ між категоріями */
+        margin-bottom: 20px;
     }
 
     body {
-        overflow-x: hidden; /* Відключаємо горизонтальний скрол для малих екранів */
+        overflow-x: hidden;
     }
 
     header {
-        padding: 5px 0; /* Зменшуємо відступ в хедері */
+        padding: 5px 0;
     }
 
     nav {
-        height: auto; /* Задаємо автоматичну висоту для навігації */
+        height: auto;
     }
 
     nav ul {
-        font-size: 18px; /* Зменшуємо розмір шрифту для пунктів навігації */
+        font-size: 18px;
     }
 
     main {
-        padding: 10px; /* Зменшуємо відступ в основному контенті */
+        padding: 10px;
     }
 
     .category-title,
     .category-actions {
-        padding: 10px; /* Зменшуємо відступ у заголовках та діях категорій */
-        font-size: 16px; /* Зменшуємо розмір шрифту для заголовків та дій категорій */
+        padding: 10px;
+        font-size: 16px;
+        opacity: 1; /* Робимо заголовки та дії завжди видимими */
+        transform: translateX(0); /* Також робимо їх видимими без ховера */
     }
 
     footer {
-        padding: 5px 0; /* Зменшуємо відступ в футері */
+        padding: 5px 0;
     }
 
     .logo-container {
-        top: 10px; /* Зменшуємо відступ логотипу від верхнього краю */
-        left: 10px; /* Зменшуємо відступ логотипу від лівого краю */
+        top: 10px;
+        left: 10px;
     }
 
     .logo-container img {
-        width: 80px; /* Зменшуємо розмір логотипу */
+        width: 80px;
     }
 
     #myModal {
-        padding: 10px; /* Зменшуємо відступ в модальному вікні */
+        padding: 10px;
     }
 
     .close {
-        font-size: 24px; /* Зменшуємо розмір кнопки закриття */
+        font-size: 24px;
     }
 
     #modalMessage {
-        font-size: 14px; /* Зменшуємо розмір шрифту для повідомлення в модальному вікні */
-        margin-bottom: 10px; /* Зменшуємо відступ у повідомленні */
+        font-size: 14px;
+        margin-bottom: 10px;
     }
 }
 
