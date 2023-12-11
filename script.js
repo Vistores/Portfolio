@@ -109,22 +109,21 @@ window.addEventListener('scroll', function () {
 });
 
 // Додайте цей код для модального вікна
-const modal = document.getElementById('myModal');
-const closeBtn = document.getElementsByClassName('close')[0];
+const modalMain = document.getElementById('myModalMain');
+const closeBtnMain = modalMain.querySelector('.close');
 
-function showModal(message) {
-  const modalMessage = document.getElementById('modalMessage');
+function showModalMain(message) {
+  const modalMessage = modalMain.querySelector('#modalMessage');
   modalMessage.innerText = message;
-  modal.style.display = 'block';
+  modalMain.style.display = 'block';
 
-  // Закриваємо модальне вікно через 2 секунди
   setTimeout(() => {
-    closeModal();
+    closeModalMain();
   }, 2000);
 }
 
-function closeModal() {
-  modal.style.display = 'none';
+function closeModalMain() {
+  modalMain.style.display = 'none';
 }
 
-closeBtn.addEventListener('click', closeModal);
+closeBtnMain.addEventListener('click', closeModalMain);
