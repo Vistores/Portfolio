@@ -1,293 +1,216 @@
-/* Спільні стилі для header та nav на всіх пристроях */
-header {
-    background-color: #045b58;
+/* styles.css */
+
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #1a1a1a;
     color: #fff;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #1a1a1a;
+    padding: 15px;
     text-align: center;
-    padding: 10px 0;
-    font-size: 30px;
+}
+
+h1 {
+    margin-bottom: 5px;
+    font-size: 2em;
+    color: #00bcd4;
+}
+
+h2 {
+    margin-top: 5px;
+    font-size: 1.5em;
+    color: #00bcd4;
 }
 
 nav {
     background-color: #333;
-    color: #fff;
-    text-align: center;
-    height: 45px;
-}
-
-nav li {
-    margin-right: 20px;
-    display: inline-block;
+    padding: 10px;
 }
 
 nav ul {
     list-style-type: none;
-    margin: auto;
-    padding: auto;
-    object-position: center;
-    font-size: 20px;
+    display: flex;
 }
 
-nav a:hover {
-    background-color: rgba(1, 1, 1, 0.3);
+nav li {
+    margin-right: 20px;
 }
 
 nav a {
-    color: #fff;
+    color: #00bcd4;
     text-decoration: none;
-    position: relative;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
 }
 
+nav a:hover {
+    color: #3498db;
+}
+
+nav li.active a {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+/* Main content styles */
 main {
-    flex: 1;
-    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 20px;
 }
 
-nav .active {
-    background-color: #309b9b;
-    background-size: auto;
-    border: double;
-    border-color: #f36400;
+h1, h2 {
+    color: #00bcd4;
 }
 
-body {
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.category {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #00bcd4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    background: linear-gradient(#000000, #00383b);
-    color: #ccc;
-    font-family: 'Dancing Script', cursive;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
-.header {
-    padding: 5px 0;
-    font-size: 20px;
-}
-
-.footer {
-    background-color: #009696; 
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.logo-container {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.logo-container img {
-    width: 100px; 
+.category-image {
+    width: 100%;
     height: auto;
-    border-radius: 100%; 
-    border: 1px solid #000000; 
+    border-bottom: 1px solid #00bcd4;
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
 }
 
-/* Загальні стилі для анімації */
-.fade {
-    animation: fadeIn 1s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0.4;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Адаптовані стилі для header та nav на мобільних пристроях */
-@media screen and (max-width: 768px) {
-    .categories {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-gap: 20px;
-        max-width: 100%;
-        max-height: 350px;
-        margin: auto;
-        justify-content: center;
-        font-size: 30px;
-        overflow-x: hidden;
-    }
-
-    .category {
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        max-width: 100%;
-        border: 2px solid transparent;
-        transition: border 0.1s ease-in-out;
-        box-sizing: border-box;
-        padding: 10px;
-    }
-
-    .category:hover {
-        border: 2px solid #cc5500;
-    }
-
-    .category-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        transition: filter 0.2s ease-in-out;
-    }
-
-    .category-info {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    .category-title,
-    .category-actions {
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 15px;
-        text-align: center;
-        color: #fff;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out, transform 0.6s ease-in-out;
-        transform: translateX(-100%);
-        font-size: 24px;
-    }
-
-    .category-actions span {
-        margin: 0px;
-        font-size: 20px;
-        color: #fff;
-        cursor: pointer;
-    }
-
-    .category:hover .category-title,
-    .category:hover .category-actions {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-footer {
-    background-color: #009696;
-    color: #fff;
+.category-title {
+    font-weight: bold;
+    color: #00bcd4;
+    max-height: 40px;
+    overflow: hidden;
+    margin: 10px 0 0 0; /* Змінено маржу */
     text-align: center;
-    padding: 10px 0;
 }
 
-.logo-container {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
+.category-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
-.logo-container img {
-    width: 100px;
-    height: auto;
-    border-radius: 100%;
-    border: 1px solid #000000;
+.category-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(26, 26, 26, 0.9);
+    box-sizing: border-box;
 }
 
-#gallery .category:not(.visible) {
-    opacity: 0;
-    transition: opacity 0.5s;
+.like,
+.share {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #00bcd4;
 }
 
-.visible {
-    opacity: 1;
-    transition: opacity 0.5s;
+.like i,
+.share i {
+    margin-right: 5px;
 }
 
-/* Модальне вікно стилі */
-#myModal {
+
+/* Modal styles */
+.modal {
+    background-color: rgba(0, 0, 0, 0.7);
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 15% auto;
     padding: 20px;
-    background-color: rgba(3, 4, 0, 0.3);
-    color: #fff;
-    border-radius: 10px;
-    text-align: center;
-    animation: fadeInOut 2s forwards;
-    z-index: 1000;
+    border: 1px solid #00bcd4;
+    width: 80%;
 }
 
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-/* Закриваючий (X) кнопка */
 .close {
-    color: #fff;
+    color: #00bcd4;
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #3498db;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.close:hover {
-    color: #ccc;
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
-/* Додатковий стиль для тексту повідомлення */
-#modalMessage {
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-/* Зробити текст видимим при наведенні на модальне вікно */
-#myModal:hover #modalMessage {
-    opacity: 1;
-}
-
-/* Стилі для анімації */
-.fade {
-    animation: fadeIn 1s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0.4;
+/* Адаптивні стилі для темного фону та бірюзових кольорів */
+@media only screen and (max-width: 600px) {
+    h1, h2 {
+        font-size: 1.5em;
     }
-    to {
-        opacity: 1;
+
+    main {
+        padding: 10px;
     }
-}
 
-/* Стилі для лайків */
-.category-actions .like {
-    font-size: 24px;
-    cursor: pointer;
-}
+    .category {
+        width: calc(50% - 20px);
+    }
 
-/* Стилі для назв категорій */
-.category-title {
-    font-size: 24px;
-}
+    .category-image {
+        max-width: 100%;
+        height: auto;
+    }
 
-/* Стилі для анімації лайків та назв категорій */
-.category-actions .like:hover,
-.category-title:hover {
-    color: #cc5500;
+    .modal-content {
+        width: 90%;
+    }
 }
