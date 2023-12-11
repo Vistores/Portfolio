@@ -16,6 +16,7 @@ body {
     color: #ccc; /* Колір тексту */
     overflow-y: scroll;
     scroll-behavior: smooth; /* Додавання плавної прокрутки */
+    overflow-x: hidden; /* Обмеження горизонтального скролу на мобільних пристроях */
 }
 
 header {
@@ -104,7 +105,6 @@ nav .active {
     transition: filter 0.2s ease-in-out;
 }
 
-
 #gallery .category-info {
     position: absolute;
     top: 0;
@@ -114,6 +114,8 @@ nav .active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #gallery .category-title {
@@ -150,7 +152,7 @@ nav .active {
 
 @media screen and (max-width: 768px) {
     #gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Мінімум 1 категорія в рядку на мобільних пристроях */
     }
 
     #gallery .category {
