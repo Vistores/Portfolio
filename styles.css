@@ -178,101 +178,99 @@ body {
     }
 }
 
+footer {
+    background-color: #009696;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
 
-    footer {
-        background-color: #009696;
-        color: #fff;
-        text-align: center;
-        padding: 10px 0;
-    }
+.logo-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
 
-    .logo-container {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 1000;
-    }
+.logo-container img {
+    width: 100px;
+    height: auto;
+    border-radius: 100%;
+    border: 1px solid #000000;
+}
 
-    .logo-container img {
-        width: 100px;
-        height: auto;
-        border-radius: 100%;
-        border: 1px solid #000000;
-    }
+#gallery .category:not(.visible) {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
 
-    #gallery .category:not(.visible) {
+.visible {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+/* Модальне вікно стилі */
+#myModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(3, 4, 0, 0.3);
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeInOut 2s forwards;
+    z-index: 1000;
+}
+
+@keyframes fadeInOut {
+    0% {
         opacity: 0;
-        transition: opacity 0.5s;
     }
-
-    .visible {
-        opacity: 1;
-        transition: opacity 0.5s;
-    }
-
-    /* Модальне вікно стилі */
-    #myModal {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: rgba(3, 4, 0, 0.3);
-        color: #fff;
-        border-radius: 10px;
-        text-align: center;
-        animation: fadeInOut 2s forwards;
-        z-index: 1000;
-    }
-
-    @keyframes fadeInOut {
-        0% {
-            opacity: 0;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-
-    /* Закриваючий (X) кнопка */
-    .close {
-        color: #fff;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .close:hover {
-        color: #ccc;
-    }
-
-    /* Додатковий стиль для тексту повідомлення */
-    #modalMessage {
-        font-size: 18px;
-        margin-bottom: 15px;
-    }
-
-    /* Зробити текст видимим при наведенні на модальне вікно */
-    #myModal:hover #modalMessage {
+    50% {
         opacity: 1;
     }
-
-    /* Стилі для анімації */
-    .fade {
-        animation: fadeIn 1s;
+    100% {
+        opacity: 0;
     }
+}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0.4;
-        }
-        to {
-            opacity: 1;
-        }
+/* Закриваючий (X) кнопка */
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+/* Додатковий стиль для тексту повідомлення */
+#modalMessage {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Зробити текст видимим при наведенні на модальне вікно */
+#myModal:hover #modalMessage {
+    opacity: 1;
+}
+
+/* Стилі для анімації */
+.fade {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
     }
 }
