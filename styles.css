@@ -1,26 +1,29 @@
 /* Стилі для категорій на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
-        grid-template-columns: repeat(3, 1fr); /* Три категорії в ряду */
+        grid-template-columns: repeat(1, 1fr); /* Одна категорія в ряду на мобільних пристроях */
     }
 
     .category {
-        width: calc(33.33% - 20px); /* Задаємо ширину категорії для того, щоб утримувати три в ряду */
+        width: calc(100% - 20px); /* Задаємо ширину категорії на 100% для відображення на весь екран */
         max-width: none;
         margin-bottom: 20px; /* Відступ між категоріями */
     }
 
+    .category:hover {
+        border: 2px solid #cc5500; /* Залишаємо ховер ефект видимим */
+    }
+
     .category-info {
-        opacity: 1;
+        opacity: 1; /* Залишаємо інформацію видимою */
     }
 
     .category-title,
     .category-actions {
-        transform: translateX(0);
+        transform: translateX(0); /* Залишаємо текст видимим при ховері */
     }
 }
 
-/* Інші стилі залишаються незмінними */
 body {
     display: flex;
     flex-direction: column;
