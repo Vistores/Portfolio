@@ -50,7 +50,8 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
         tempTextArea.select();
         document.execCommand('copy');
         document.body.removeChild(tempTextArea);
-        alert('Посилання скопійовано!');
+
+        showModal('Посилання скопійовано!');
     });
 });
 
@@ -105,3 +106,24 @@ window.addEventListener('scroll', function () {
         loadMoreContent();
     }
 });
+
+// Додайте цей код для модального вікна
+const modal = document.getElementById('myModal');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+function showModal(message) {
+  const modalMessage = document.getElementById('modalMessage');
+  modalMessage.innerText = message;
+  modal.style.display = 'block';
+
+  // Закриваємо модальне вікно через 2 секунди
+  setTimeout(() => {
+    closeModal();
+  }, 2000);
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+closeBtn.addEventListener('click', closeModal);
