@@ -1,16 +1,40 @@
 /* Адаптовані стилі для header та nav на мобільних пристроях */
 @media screen and (max-width: 768px) {
-    .categories {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Замінюємо auto-fill на auto-fit на мобільних пристроях */
-        font-size: 1.5rem; /* або будь-яке інше значення, яке вам підходить */
+     .categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        grid-gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+        justify-content: center;
+        font-size: 30px;
     }
 
     .category {
-        width: 100%; /* Зробіть ширину 100% */
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+        width: calc(33.33% - 20px); /* Зменшено ширину категорії */
+        border: 2px solid transparent;
+        transition: border 0.1s ease-in-out;
     }
 
-    .category-image {
-        height: auto; /* Зробіть висоту автоматичною, щоб уникнути здорових зображень */
+    .category-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        opacity: 1; /* Завжди видимий */
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .category:hover .category-info {
+        opacity: 1;
     }
 
     header {
