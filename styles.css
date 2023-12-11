@@ -1,8 +1,17 @@
 /* Адаптовані стилі для header та nav на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
-        font-size: 1.5rem; /* або будь-яке інше значення, яке вам підходить */
+        font-size: 1.5rem;
     }
+
+    .category {
+        width: 100%; /* Зробіть ширину 100% */
+    }
+
+    .category-image {
+        height: auto; /* Зробіть висоту автоматичною, щоб уникнути здорових зображень */
+    }
+
     header {
         padding: 5px 0;
         font-size: 20px;
@@ -18,11 +27,11 @@
     }
 
     nav ul li {
-        margin-right: 10px; /* Збільшено відступ між елементами меню */
+        margin-right: 10px;
     }
 
     nav .active {
-        border: none; /* Видаляємо подвійну рамку для активного елементу */
+        border: none;
     }
 }
 
@@ -43,8 +52,8 @@ nav {
 }
 
 nav li {
-    margin-right: 20px; /* Збільшено відступ між елементами меню на більших екранах */
-    display: inline-block; /* Щоб елементи на більших екранах розташовувалися горизонтально */
+    margin-right: 20px;
+    display: inline-block;
 }
 
 nav ul {
@@ -83,11 +92,11 @@ body {
     min-height: 100vh;
     margin: 0;
     background: linear-gradient(#000000, #00383b);
-    color: #ccc; /* Колір тексту */
+    color: #ccc;
     font-family: 'Dancing Script', cursive;
     overflow-y: scroll;
-    scroll-behavior: smooth; /* Додавання плавної прокрутки */
-    overflow-x: hidden; /* Додано для усунення горизонтального скрола на мобільних пристроях */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 header {
@@ -158,7 +167,7 @@ nav .active {
     position: relative;
     overflow: hidden;
     max-width: 100%;
-    width: 100%; /* Зробіть ширину 100% */
+    width: 100%;
     border: 2px solid transparent;
     transition: border 0.1s ease-in-out;
 }
@@ -256,7 +265,7 @@ footer {
   border-radius: 10px;
   text-align: center;
   animation: fadeInOut 2s forwards;
-  z-index: 1000; /* Задайте високий z-index */
+  z-index: 1000;
 }
 
 @keyframes fadeInOut {
