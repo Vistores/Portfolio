@@ -1,72 +1,78 @@
-/* Стилі для категорій на мобільних пристроях */
+/* Адаптовані стилі для header та nav на мобільних пристроях */
 @media screen and (max-width: 768px) {
-    .categories {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .category {
-        width: calc(33.33% - 10px);
-        max-width: none;
-        margin-bottom: 20px;
-    }
-
-    body {
-        overflow-x: hidden;
-    }
-
     header {
         padding: 5px 0;
+        font-size: 20px;
     }
 
     nav {
         height: auto;
-    }
-
-    nav ul {
         font-size: 18px;
     }
 
-    main {
-        padding: 10px;
-    }
-
-    .category-title,
-    .category-actions {
-        padding: 10px;
+    nav ul {
         font-size: 16px;
-        opacity: 1; /* Робимо заголовки та дії завжди видимими */
-        transform: translateX(0); /* Також робимо їх видимими без ховера */
     }
 
-    footer {
-        padding: 5px 0;
+    nav ul li {
+        margin-right: 10px; /* Збільшено відступ між елементами меню */
     }
 
-    .logo-container {
-        top: 10px;
-        left: 10px;
-    }
-
-    .logo-container img {
-        width: 80px;
-    }
-
-    #myModal {
-        padding: 10px;
-    }
-
-    .close {
-        font-size: 24px;
-    }
-
-    #modalMessage {
-        font-size: 14px;
-        margin-bottom: 10px;
+    nav .active {
+        border: none; /* Видаляємо подвійну рамку для активного елементу */
     }
 }
 
+/* Загальні стилі для header та nav, незалежно від розмірів екрану */
+header {
+    background-color: #045b58;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 30px;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    height: 45px;
+}
+
+nav li {
+    margin-right: 20px; /* Збільшено відступ між елементами меню на більших екранах */
+    display: inline-block; /* Щоб елементи на більших екранах розташовувалися горизонтально */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: auto;
+    padding: auto;
+    object-position: center;
+    font-size: 20px;
+}
+
+nav a:hover {
+    background-color: rgba(1, 1, 1, 0.3);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+main {
+    flex: 1;
+    min-height: 100vh;
+}
+
+nav .active {
+    background-color: #309b9b;
+    background-size: auto;
+    border: double;
+    border-color: #f36400;
+}
 
 body {
     display: flex;
