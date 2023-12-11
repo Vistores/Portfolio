@@ -37,11 +37,17 @@ function updateLikeCount(categoryId, count, liked) {
 
 // Функція для відображення модального вікна з повідомленням
 function showModal(message) {
-    const modal = document.getElementById('myModal');
     const modalMessage = document.getElementById('modalMessage');
-
     modalMessage.textContent = message;
-    modal.style.display = 'block';
+
+    // Додано код для зміни видимості модального вікна
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'flex';
+
+    // Змінено код для автоматичного закриття модального вікна через певний час
+    setTimeout(() => {
+        closeModal();
+    }, 2000);  // Час в мілісекундах, наприклад, 2000 мілісекунд (2 секунди)
 }
 
 // Функція для закриття модального вікна
