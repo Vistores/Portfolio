@@ -1,8 +1,8 @@
 /* Адаптовані стилі для header та nav на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
-        font-size: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Оновлено auto-fill на auto-fit */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Замінюємо auto-fill на auto-fit на мобільних пристроях */
+        font-size: 1.5rem; /* або будь-яке інше значення, яке вам підходить */
     }
 
     .category {
