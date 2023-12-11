@@ -138,14 +138,16 @@ nav .active {
 }
 
 
+/* Стилі для категорій на мобільних пристроях */
 @media screen and (max-width: 768px) {
     .categories {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        grid-template-columns: 3fr; 
     }
 
     .category {
         width: 100%;
         max-width: none;
+        margin-bottom: 20px; /* Відступ між категоріями */
     }
 
     .category-info {
@@ -157,6 +159,7 @@ nav .active {
         transform: translateX(0);
     }
 }
+
 
 footer {
     background-color: #009696; 
