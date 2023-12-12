@@ -48,13 +48,17 @@ function updateLikeCount(categoryId, count, liked) {
 }
 
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
-    const categoryFileName = `category${index + 1}.html`;
-    const currentPath = window.location.href.replace('index.html', '');
-    const categoryPageURL = `${currentPath}${categoryFileName}`;
+     const categoryFileName = `category${index + 1}.html`;
+        const currentPath = window.location.href.replace('index.html', '');
+        const categoryPageURL = `${currentPath}${categoryFileName}`;
 
-    new ClipboardJS(shareBtn, {
-        text: function () {
-            return categoryPageURL;
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = categoryPageURL;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
         }
     });
 
