@@ -35,27 +35,6 @@ function updateLikeCount(categoryId, count, liked) {
     localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
 }
 
-// Функція для відображення модального вікна з повідомленням
-function showModal(message) {
-    const modalMessage = document.getElementById('modalMessage');
-    modalMessage.textContent = message;
-
-    // Додано код для зміни видимості модального вікна
-    const modal = document.getElementById('myModal');
-    modal.style.display = 'flex';
-
-    // Змінено код для автоматичного закриття модального вікна через певний час
-    setTimeout(() => {
-        closeModal();
-    }, 2000);  // Час в мілісекундах, наприклад, 2000 мілісекунд (2 секунди)
-}
-
-// Функція для закриття модального вікна
-function closeModal() {
-    const modal = document.getElementById('myModal');
-    modal.style.display = 'none';
-}
-
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
     shareBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -152,6 +131,4 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
 
 // Додаємо обробник події копіювання до документу
 document.addEventListener('copy', () => {
-    // Виводимо модальне вікно при копіюванні (можна також використовувати ваш showModal)
-    showModal('Посилання скопійовано!');
 });
