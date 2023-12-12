@@ -48,25 +48,25 @@ function updateLikeCount(categoryId, count, liked) {
 }
 
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
+    const categoryFileName = `category${index + 1}.html`;
+    const currentPath = window.location.href.replace('index.html', '');
+    const categoryPageURL = `${currentPath}${categoryFileName}`;
+
+    new ClipboardJS(shareBtn, {
+        text: function () {
+            return categoryPageURL;
+        }
+    });
+
     shareBtn.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
-
-        const categoryFileName = `category${index + 1}.html`;
-        const currentPath = window.location.href.replace('index.html', '');
-        const categoryPageURL = `${currentPath}${categoryFileName}`;
-
-        const tempTextArea = document.createElement('textarea');
-        tempTextArea.value = categoryPageURL;
-        document.body.appendChild(tempTextArea);
-        tempTextArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempTextArea);
 
         // Виводимо повідомлення про копіювання
         showCopyMessage('Посилання скопійовано!');
     });
 });
+
 
 document.addEventListener('DOMContentLoaded', function () {
     Object.keys(categoryLikes).forEach(categoryId => {
