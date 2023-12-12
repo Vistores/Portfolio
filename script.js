@@ -1,5 +1,17 @@
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
 
+// Функція для відображення блоку повідомлення
+function showCopyMessage(message) {
+    const copyMessage = document.getElementById('copyMessage');
+    copyMessage.innerHTML = message;
+    copyMessage.style.display = 'block';
+
+    // Через 2 секунди сховати повідомлення
+    setTimeout(function () {
+        copyMessage.style.display = 'none';
+    }, 2000);
+}
+
 function showCategoryActions(categoryId) {
     const actions = document.getElementById(`categoryActions${categoryId}`);
     actions.classList.add('visible');
@@ -51,8 +63,8 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
         document.execCommand('copy');
         document.body.removeChild(tempTextArea);
 
-        // Виводимо модальне вікно при копіюванні посилання
-        showModal('Посилання скопійовано!');
+        // Виводимо повідомлення про копіювання
+        showCopyMessage('Посилання скопійовано!');
     });
 });
 
@@ -70,22 +82,20 @@ document.addEventListener('lazybeforeunveil', function (e) {
     }
 });
 
-// Використовуємо Intersection Observer для визначення, коли елемент стає видимим
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const category = entry.target;
             category.classList.add('visible');
-            observer.unobserve(category); // Прибираємо зі спостереження, коли елемент вже видимий
+            observer.unobserve(category);
         }
     });
-}, { threshold: 0.5 }); // threshold визначає, який частка елемента має бути видимою для спрацювання
+}, { threshold: 0.5 });
 
 document.querySelectorAll('.category').forEach(category => {
     observer.observe(category);
 });
 
-// Додавання підгрузки по скролу
 let loadMoreContentFlag = true;
 
 function loadMoreContent() {
@@ -108,27 +118,8 @@ window.addEventListener('scroll', function () {
     }
 });
 
-document.querySelectorAll('.share').forEach((shareBtn, index) => {
-    shareBtn.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const categoryFileName = `category${index + 1}.html`;
-        const currentPath = window.location.href.replace('index.html', '');
-        const categoryPageURL = `${currentPath}${categoryFileName}`;
-
-        const tempTextArea = document.createElement('textarea');
-        tempTextArea.value = categoryPageURL;
-        document.body.appendChild(tempTextArea);
-        tempTextArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempTextArea);
-
-        // Виводимо модальне вікно при копіюванні посилання
-        showModal('Посилання скопійовано!');
-    });
-});
-
-// Додаємо обробник події копіювання до документу
 document.addEventListener('copy', () => {
+    // Ваш обробник події копіювання
 });
+
+// Інші ваші функції та код
