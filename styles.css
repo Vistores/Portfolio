@@ -198,6 +198,18 @@ footer {
 
 /* Адаптивні стилі для темного фону та бірюзових кольорів */
 @media only screen and (max-width: 600px) {
+    .copy-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+}
     h1, h2 {
         font-size: 1.5em;
     }
