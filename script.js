@@ -48,7 +48,7 @@ function updateLikeCount(categoryId, count, liked) {
 }
 
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
-    shareBtn.addEventListener('copy', (event) => {
+    shareBtn.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
 
@@ -118,8 +118,28 @@ window.addEventListener('scroll', function () {
     }
 });
 
+document.querySelectorAll('.share').forEach((shareBtn, index) => {
+    shareBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const categoryFileName = `category${index + 1}.html`;
+        const currentPath = window.location.href.replace('index.html', '');
+        const categoryPageURL = `${currentPath}${categoryFileName}`;
+
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = categoryPageURL;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
+        // Виводимо повідомлення про копіювання
+        showCopyMessage('Посилання скопійовано!');
+    });
+});
+
+// Додаємо обробник події копіювання до документу
 document.addEventListener('copy', () => {
     // Ваш обробник події копіювання
 });
-
-// Інші ваші функції та код
