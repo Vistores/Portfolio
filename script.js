@@ -37,11 +37,7 @@ function updateLikeCount(categoryId, count, liked) {
 }
 
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
-    shareBtn.addEventListener('copy', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const categoryFileName = `category${index + 1}.html`;
+const categoryFileName = `category${index + 1}.html`;
         const currentPath = window.location.href.replace('index.html', '');
         const categoryPageURL = `${currentPath}${categoryFileName}`;
 
@@ -51,13 +47,16 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
         tempTextArea.select();
         document.execCommand('copy');
         document.body.removeChild(tempTextArea);
+ }
+    });
 
+    shareBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         // Виводимо повідомлення про копіювання
         showCopyMessage('Посилання скопійовано!');
     });
 });
-
-
 document.addEventListener('DOMContentLoaded', function () {
     Object.keys(categoryLikes).forEach(categoryId => {
         const { count, liked } = categoryLikes[categoryId];
@@ -99,4 +98,7 @@ window.addEventListener('scroll', function () {
     if (scrollTop + windowHeight >= documentHeight * 0.8) {
         loadMoreContent();
     }
+});
+document.addEventListener('copy', () => {
+    // Ваш обробник події копіювання
 });
