@@ -48,7 +48,7 @@ function updateLikeCount(categoryId, count, liked) {
 }
 
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
-    shareBtn.addEventListener('click', (event) => {
+    shareBtn.addEventListener('copy', (event) => {
         event.preventDefault();
         event.stopPropagation();
 
