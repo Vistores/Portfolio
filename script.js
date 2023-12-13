@@ -1,77 +1,37 @@
+// script.js
+
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
 
-// Функція для відображення блоку повідомлення
 function showCopyMessage(message) {
     const copyMessage = document.getElementById('copyMessage');
     copyMessage.innerHTML = message;
     copyMessage.style.display = 'block';
 
-    // Через 2 секунди сховати повідомлення
     setTimeout(function () {
         copyMessage.style.display = 'none';
     }, 2000);
 }
 
 function showCategoryActions(categoryId) {
-    const actions = document.getElementById(`categoryActions${categoryId}`);
+    const actions = document.querySelector(`[data-category-id="${categoryId}"] .category-actions`);
     actions.classList.add('visible');
 }
 
 function hideCategoryActions(categoryId) {
-    const actions = document.getElementById(`categoryActions${categoryId}`);
+    const actions = document.querySelector(`[data-category-id="${categoryId}"] .category-actions`);
     actions.classList.remove('visible');
 }
 
-function toggleLikeCategory(categoryId, event) {
-    event.preventDefault();
+document.querySelectorAll('.category').forEach(category => {
+    const categoryId = category.getAttribute('data-category-id');
 
-    if (!categoryLikes[categoryId]) {
-        categoryLikes[categoryId] = { count: 0, liked: false };
-    }
+    category.addEventListener('mouseover', () => showCategoryActions(categoryId));
+    category.addEventListener('mouseout', () => hideCategoryActions(categoryId));
 
-    if (categoryLikes[categoryId].liked) {
-        categoryLikes[categoryId].count--;
-    } else {
-        categoryLikes[categoryId].count++;
-    }
-
-    categoryLikes[categoryId].liked = !categoryLikes[categoryId].liked;
-
-    updateLikeCount(categoryId, categoryLikes[categoryId].count, categoryLikes[categoryId].liked);
-}
-
-function updateLikeCount(categoryId, count, liked) {
-    const likeSpan = document.getElementById(`categoryActions${categoryId}`).querySelector('.like');
-    likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} ${count}`;
-
-    localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
-}
-
-document.querySelectorAll('.share').forEach((shareBtn, index) => {
-    shareBtn.addEventListener('copy', (event) => {
-        event.preventDefault();
+    category.querySelector('.like').addEventListener('click', (event) => {
         event.stopPropagation();
-
-        const categoryFileName = `category${index + 1}.html`;
-        const currentPath = window.location.href.replace('index.html', '');
-        const categoryPageURL = `${currentPath}${categoryFileName}`;
-
-        const tempTextArea = document.createElement('textarea');
-        tempTextArea.value = categoryPageURL;
-        document.body.appendChild(tempTextArea);
-        tempTextArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempTextArea);
-
-        // Виводимо повідомлення про копіювання
-        showCopyMessage('Посилання скопійовано!');
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    Object.keys(categoryLikes).forEach(categoryId => {
-        const { count, liked } = categoryLikes[categoryId];
-        updateLikeCount(categoryId, count, liked);
+        event.preventDefault();
+        toggleLikeCategory(categoryId, window.location.pathname);
     });
 });
 
@@ -134,12 +94,65 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
         document.execCommand('copy');
         document.body.removeChild(tempTextArea);
 
-        // Виводимо повідомлення про копіювання
         showCopyMessage('Посилання скопійовано!');
     });
 });
 
-// Додаємо обробник події копіювання до документу
 document.addEventListener('copy', () => {
     // Ваш обробник події копіювання
+});
+
+function toggleLikeCategory(categoryId, pagePath) {
+    if (!categoryLikes[categoryId]) {
+        categoryLikes[categoryId] = {};
+    }
+
+    if (!categoryLikes[categoryId][pagePath]) {
+        categoryLikes[categoryId][pagePath] = { count: 0, liked: false };
+    }
+
+    const currentLike = categoryLikes[categoryId][pagePath];
+
+    if (currentLike.liked) {
+        currentLike.count--;
+    } else {
+        currentLike.count++;
+    }
+
+    currentLike.liked = !currentLike.liked;
+
+    updateLikeCount(categoryId, currentLike.count, currentLike.liked, pagePath);
+}
+
+function updateLikeCount(categoryId, count, liked, pagePath) {
+    const likeSpan = document.querySelector(`[data-category-id="${categoryId}"] .like`);
+    likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} ${count}`;
+
+    categoryLikes[categoryId][pagePath] = { count, liked };
+
+    localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('.categories')) {
+        Object.keys(categoryLikes).forEach(categoryId => {
+            const pagePath = window.location.pathname;
+            const currentLike = categoryLikes[categoryId][pagePath];
+
+            if (currentLike) {
+                updateLikeCount(categoryId, currentLike.count, currentLike.liked, pagePath);
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Отримуємо поточний рік
+    const currentYear = new Date().getFullYear();
+
+    // Вставляємо поточний рік в елемент футера
+    const footerYearElement = document.getElementById('footerYear');
+    if (footerYearElement) {
+        footerYearElement.textContent = currentYear;
+    }
 });

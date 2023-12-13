@@ -95,6 +95,7 @@ h1, h2 {
 .category {
     width: calc(23.33% - 20px);
     margin: 10px;
+    height: 100%;
     position: relative;
     overflow: hidden;
     border: 1px solid #00bcd4;
@@ -133,6 +134,7 @@ h1, h2 {
 }
 
 .category-info {
+    max-height: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -196,8 +198,8 @@ footer {
     width: 100%;
 }
 
-/* Адаптивні стилі для темного фону та бірюзових кольорів */
-@media only screen and (max-width: 600px) {
+/* Адаптивні стилі */
+@media only screen and (max-width: 850px) {
     .copy-message {
     display: none;
     position: fixed;
@@ -210,6 +212,10 @@ footer {
     padding: 10px;
     z-index: 1000;
 }
+.like,
+.share {
+    font-size: 1.8em;
+}
     h1, h2 {
         font-size: 1.5em;
     }
@@ -219,7 +225,7 @@ footer {
     }
 
     .category {
-        width: calc(50% - 20px);
+        width: calc(80% - 20px);
     }
 
     .category-image {
@@ -228,7 +234,7 @@ footer {
     }
 
     .modal-content {
-        width: 90%;
+        width: 80%;
     }
 }
 

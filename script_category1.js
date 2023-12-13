@@ -1,16 +1,15 @@
-// script_category1.js
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
-let visibleCategories = 4; // Початкова кількість видимих категорій
+let visibleCategories = 3;
 let isLoading = false;
 
 function showCategoryActions(categoryId) {
     const actions = document.getElementById(`categoryActions${categoryId}`);
-    actions.style.opacity = 'visible';
+    actions.style.opacity = '1';
 }
 
 function hideCategoryActions(categoryId) {
     const actions = document.getElementById(`categoryActions${categoryId}`);
-    actions.style.opacity = 'visible';
+    actions.style.opacity = '1';
 }
 
 function toggleLikeCategory(categoryId, event) {
@@ -39,16 +38,13 @@ function updateLikeCount(categoryId, count, liked) {
 }
 
 function openImageConfirmation(imagePath) {
-    const confirmMessage = `Відкрити оригінальне зображення в новій вкладці?\n${imagePath}`;
-    if (window.confirm(confirmMessage)) {
         window.open(imagePath, '_blank');
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    const gallery = document.getElementById('gallery');
     const categories = document.querySelectorAll('.category');
     const totalCategories = categories.length;
-    const categoriesPerPage = 4;
 
     function showCategories() {
         for (let i = 0; i < visibleCategories; i++) {
@@ -59,22 +55,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
     showCategories();
 
-    window.addEventListener('scroll', function () {
-        const lastCategory = document.querySelector('.category:last-child');
-        const lastCategoryOffset = lastCategory.offsetTop + lastCategory.clientHeight;
-        const pageOffset = window.pageYOffset + window.innerHeight;
-
-        if (pageOffset > lastCategoryOffset - 200 && visibleCategories < totalCategories) {
-            visibleCategories += categoriesPerPage;
-            showCategories();
+    function loadMoreCategories() {
+        if (isLoading) {
+            return;
         }
+
+        isLoading = true;
+
+        const categories = document.querySelectorAll('.category');
+        const totalCategories = categories.length;
+        const batchSize = 3;
+        const distanceToLoad = 200;
+
+        for (let i = visibleCategories; i < totalCategories; i++) {
+            const category = categories[i];
+            const categoryOffset = category.offsetTop + category.clientHeight;
+            const pageOffset = window.pageYOffset + window.innerHeight;
+
+            if (pageOffset > categoryOffset - distanceToLoad) {
+                category.classList.add('visible');
+                visibleCategories++;
+            } else {
+                break;
+            }
+        }
+
+        isLoading = false;
+    }
+
+    let lastScrollTop = 0;
+
+    document.addEventListener('scroll', function () {
+        const st = window.scrollY;
+
+        if (st > lastScrollTop) {
+            loadMoreCategories();
+        }
+
+        lastScrollTop = st <= 0 ? 0 : st;
     });
 
-    // Додаємо обробник події для кожного зображення в категорії
     categories.forEach((category, index) => {
+        const categoryId = index + 1;
+        const categoryActions = document.getElementById(`categoryActions${categoryId}`);
+        const likeSpan = categoryActions.querySelector('.like');
         const image = category.querySelector('.category-image');
+        const imagePath = image.getAttribute('data-path');
+
+        category.addEventListener('mouseover', function () {
+            showCategoryActions(categoryId);
+        });
+
+        category.addEventListener('mouseout', function () {
+            hideCategoryActions(categoryId);
+        });
+
+        likeSpan.addEventListener('click', function (event) {
+            event.stopPropagation();
+            toggleLikeCategory(categoryId, event);
+        });
+
         image.addEventListener('click', function () {
-            const imagePath = image.src;
             openImageConfirmation(imagePath);
         });
     });
@@ -91,41 +132,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    window.addEventListener('scroll', function () {
+    document.addEventListener('scroll', function () {
         const lastCategory = document.querySelector('.category:last-child');
         const lastCategoryOffset = lastCategory.offsetTop + lastCategory.clientHeight;
         const pageOffset = window.pageYOffset + window.innerHeight;
 
-        if (pageOffset > lastCategoryOffset - 200) {
+        if (pageOffset > lastCategoryOffset - 200 && visibleCategories < totalCategories) {
+            visibleCategories += 3;
             loadMoreCategories();
         }
     });
-});
 
-function loadMoreCategories() {
-    if (isLoading) {
-        return;
-    }
-
-    isLoading = true;
-
-    const categories = document.querySelectorAll('.category');
-    const totalCategories = categories.length;
-
-    for (let i = visibleCategories; i < visibleCategories + 4 && i < totalCategories; i++) {
-        const category = categories[i];
-        category.classList.add('visible');
-    }
-
-    visibleCategories += 4;
-
-    isLoading = false;
-}
-
-// Показуємо лайки для всіх категорій відразу
-categories.forEach((category, index) => {
-    const categoryId = index + 1;
-    const likeSpan = document.getElementById(`categoryActions${categoryId}`).querySelector('.like');
-    const { count, liked } = categoryLikes[categoryId] || { count: 0, liked: false };
-    likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} ${count}`;
+    document.addEventListener('DOMContentLoaded', function () {
+        const footerElement = document.querySelector('footer p');
+        const currentYear = new Date().getFullYear();
+        footerElement.innerHTML = `&copy; ${currentYear} Докзя. Усі права захищено.`;
+    });
 });
