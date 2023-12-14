@@ -34,7 +34,12 @@ function updateLikeCount(categoryId, count, liked) {
     const likeSpan = document.getElementById(`categoryActions${categoryId}`).querySelector('.like');
     likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} ${count}`;
 
-    localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
+    // Перевірка на "undefined" та встановлення значення на "0", якщо потрібно
+    if (localStorage.getItem('categoryLikes') === undefined) {
+        localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
+    } else {
+        localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes || {}));
+    }
 }
 
 function openImageConfirmation(imagePath) {
