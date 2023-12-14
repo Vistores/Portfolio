@@ -25,22 +25,19 @@ function toggleLikeCategory(categoryId, event) {
         categoryLikes[categoryId] = { count: 0, liked: false };
     }
 
-    if (categoryLikes[categoryId].liked === undefined) {
+    const currentLike = categoryLikes[categoryId];
+
+    if (currentLike.liked === undefined) {
         // Якщо лайк був undefined, робимо його лайкнутим
-        categoryLikes[categoryId].liked = true;
-        categoryLikes[categoryId].count = 1;
+        currentLike.liked = true;
+        currentLike.count = 1;
     } else {
-        if (categoryLikes[categoryId].liked) {
-            categoryLikes[categoryId].count--;
-        } else {
-            categoryLikes[categoryId].count++;
-        }
+        currentLike.count += currentLike.liked ? -1 : 1;
+        currentLike.liked = !currentLike.liked;
     }
 
-    categoryLikes[categoryId].liked = !categoryLikes[categoryId].liked;
-
     // Оновлення відображення лайків та їх збереження
-    updateLikeCount(categoryId, categoryLikes[categoryId].count, categoryLikes[categoryId].liked);
+    updateLikeCount(categoryId, currentLike.count, currentLike.liked);
 }
 
 // Функція оновлення відображення лайків та збереження їх в localStorage
