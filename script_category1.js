@@ -18,27 +18,25 @@ function hideCategoryActions(categoryId) {
 }
 
 // Функція зміни стану "лайку" категорії
-function toggleLikeCategory(categoryId, event) {
-    event.preventDefault();
-
+function toggleLikeCategory(categoryId, pagePath) {
     if (!categoryLikes[categoryId]) {
         categoryLikes[categoryId] = { count: 0, liked: false };
     }
 
-    const currentLike = categoryLikes[categoryId];
+    const currentLike = categoryLikes[categoryId][pagePath];
 
-    if (currentLike.liked === undefined) {
+    if (currentLike === undefined) {
         // Якщо лайк був undefined, робимо його лайкнутим
-        currentLike.liked = true;
-        currentLike.count = 1;
+        categoryLikes[categoryId][pagePath] = { count: 1, liked: true };
     } else {
         currentLike.count += currentLike.liked ? -1 : 1;
         currentLike.liked = !currentLike.liked;
     }
 
     // Оновлення відображення лайків та їх збереження
-    updateLikeCount(categoryId, currentLike.count, currentLike.liked);
+    updateLikeCount(categoryId, currentLike.count, currentLike.liked, pagePath);
 }
+
 
 // Функція оновлення відображення лайків та збереження їх в localStorage
 function updateLikeCount(categoryId, count, liked) {
