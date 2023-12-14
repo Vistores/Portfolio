@@ -194,10 +194,8 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: absolute;
     bottom: 0;
     left: 0;
-    width:-webkit-fill-available;
 }
 
 /* Адаптивні стилі */
