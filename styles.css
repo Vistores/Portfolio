@@ -114,7 +114,7 @@ h1, h2 {
 
 .category-image {
     width: 100%;
-    height: 33vw;
+    height: 25vw;
     object-fit: cover;
     border-bottom: 1px solid #00bcd4;
     display: block;
