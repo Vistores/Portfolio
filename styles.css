@@ -114,7 +114,8 @@ h1, h2 {
 
 .category-image {
     width: 100%;
-    height: auto;
+    height: 33vw;
+    object-fit: cover;
     border-bottom: 1px solid #00bcd4;
     display: block;
     margin: 0 auto;
@@ -192,7 +193,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
