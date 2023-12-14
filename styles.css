@@ -126,7 +126,7 @@ h1, h2 {
 .category-title {
     font-weight: bold;
     color: #00bcd4;
-    max-height: 40px;
+    max-height: 30px;
     overflow: hidden;
     margin: 10px 0 0 0; /* Змінено маржу */
     text-align: center;
