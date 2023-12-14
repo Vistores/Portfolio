@@ -1,7 +1,9 @@
 // script.js
 
+// Ініціалізація об'єкту для збереження лайків
 let categoryLikes = JSON.parse(localStorage.getItem('categoryLikes')) || {};
 
+// Функція відображення повідомлення про копіювання
 function showCopyMessage(message) {
     const copyMessage = document.getElementById('copyMessage');
     copyMessage.innerHTML = message;
@@ -12,16 +14,19 @@ function showCopyMessage(message) {
     }, 2000);
 }
 
+// Функція відображення дій з категорією при наведенні
 function showCategoryActions(categoryId) {
     const actions = document.querySelector(`[data-category-id="${categoryId}"] .category-actions`);
     actions.classList.add('visible');
 }
 
+// Функція приховання дій з категорією при відведенні
 function hideCategoryActions(categoryId) {
     const actions = document.querySelector(`[data-category-id="${categoryId}"] .category-actions`);
     actions.classList.remove('visible');
 }
 
+// Додавання обробників подій для кожної категорії
 document.querySelectorAll('.category').forEach(category => {
     const categoryId = category.getAttribute('data-category-id');
 
@@ -35,6 +40,7 @@ document.querySelectorAll('.category').forEach(category => {
     });
 });
 
+// Додавання обробників подій для лінивого завантаження зображень
 document.addEventListener('lazybeforeunveil', function (e) {
     const bg = e.target.getAttribute('data-bg');
     if (bg) {
@@ -42,6 +48,7 @@ document.addEventListener('lazybeforeunveil', function (e) {
     }
 });
 
+// Створення спостерігача для виявлення взаємодії з категоріями
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -52,12 +59,15 @@ const observer = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.5 });
 
+// Додавання кожній категорії спостерігача
 document.querySelectorAll('.category').forEach(category => {
     observer.observe(category);
 });
 
+// Ініціалізація флагу для завантаження додаткового контенту
 let loadMoreContentFlag = true;
 
+// Функція завантаження додаткового контенту
 function loadMoreContent() {
     if (loadMoreContentFlag) {
         const existingContent = document.querySelectorAll('.category');
@@ -68,6 +78,7 @@ function loadMoreContent() {
     }
 }
 
+// Додавання обробника подій для прокрутки сторінки
 window.addEventListener('scroll', function () {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     const windowHeight = window.innerHeight;
@@ -78,6 +89,7 @@ window.addEventListener('scroll', function () {
     }
 });
 
+// Додавання обробників подій для кожної кнопки "Поділитися"
 document.querySelectorAll('.share').forEach((shareBtn, index) => {
     shareBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -98,32 +110,32 @@ document.querySelectorAll('.share').forEach((shareBtn, index) => {
     });
 });
 
-document.addEventListener('copy', () => {
-    // Ваш обробник події копіювання
-});
-
+// Функція зміни стану "лайку" категорії
 function toggleLikeCategory(categoryId, pagePath) {
     if (!categoryLikes[categoryId]) {
         categoryLikes[categoryId] = {};
     }
 
     if (!categoryLikes[categoryId][pagePath]) {
-        categoryLikes[categoryId][pagePath] = { count: 0, liked: false };
-    }
-
-    const currentLike = categoryLikes[categoryId][pagePath];
-
-    if (currentLike.liked) {
-        currentLike.count--;
+        // Якщо лайк був undefined, робимо його лайкнутим
+        categoryLikes[categoryId][pagePath] = { count: 1, liked: true };
     } else {
-        currentLike.count++;
+        const currentLike = categoryLikes[categoryId][pagePath];
+
+        if (currentLike.liked) {
+            currentLike.count--;
+        } else {
+            currentLike.count++;
+        }
+
+        currentLike.liked = !currentLike.liked;
     }
 
-    currentLike.liked = !currentLike.liked;
-
-    updateLikeCount(categoryId, currentLike.count, currentLike.liked, pagePath);
+    // Оновлення відображення лайків та їх збереження
+    updateLikeCount(categoryId, categoryLikes[categoryId][pagePath].count, categoryLikes[categoryId][pagePath].liked, pagePath);
 }
 
+// Функція оновлення відображення лайків та збереження їх в localStorage
 function updateLikeCount(categoryId, count, liked, pagePath) {
     const likeSpan = document.querySelector(`[data-category-id="${categoryId}"] .like`);
     likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} ${count}`;
@@ -133,8 +145,11 @@ function updateLikeCount(categoryId, count, liked, pagePath) {
     localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
 }
 
+// Обробник події завантаження сторінки
 document.addEventListener('DOMContentLoaded', function () {
+    // Перевірка, чи є на сторінці категорії
     if (document.querySelector('.categories')) {
+        // Ітерація по всіх категоріях та оновлення лайків
         Object.keys(categoryLikes).forEach(categoryId => {
             const pagePath = window.location.pathname;
             const currentLike = categoryLikes[categoryId][pagePath];
@@ -146,11 +161,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// Обробник події завантаження сторінки для вставки поточного року в футер
 document.addEventListener('DOMContentLoaded', function () {
-    // Отримуємо поточний рік
+    // Отримання поточного року
     const currentYear = new Date().getFullYear();
 
-    // Вставляємо поточний рік в елемент футера
+    // Вставка поточного року в елемент футера
     const footerYearElement = document.getElementById('footerYear');
     if (footerYearElement) {
         footerYearElement.textContent = currentYear;
