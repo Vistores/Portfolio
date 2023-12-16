@@ -231,7 +231,7 @@ footer {
     }
 
     .category {
-        width: calc(80% - 20px);
+        width: 100%;
     }
 
     .category-image {
