@@ -196,6 +196,7 @@ footer {
     padding: 10px;
     bottom: 0;
     left: 0;
+    margin-top: 100%;
 }
 
 /* Адаптивні стилі */
@@ -225,7 +226,7 @@ footer {
     }
 
     .category {
-        width: calc(80% - 20px);
+        width: webkit-fill-available;
     }
 
     .category-image {
