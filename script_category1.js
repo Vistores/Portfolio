@@ -16,13 +16,10 @@ function toggleLikeCategory(categoryId, event) {
     event.preventDefault();
 
     if (!categoryLikes[categoryId]) {
-        categoryLikes[categoryId] = { count: 0, liked: false };
+        categoryLikes[categoryId] = { liked: false };
     }
 
-    if (categoryLikes[categoryId].liked) {
-        categoryLikes[categoryId].count--;
-    } else {
-        categoryLikes[categoryId].count++;
+    if (categoryLikes[categoryId].liked) {   
     }
 
     categoryLikes[categoryId].liked = !categoryLikes[categoryId].liked;
@@ -30,9 +27,9 @@ function toggleLikeCategory(categoryId, event) {
     updateLikeCount(categoryId, categoryLikes[categoryId].count, categoryLikes[categoryId].liked);
 }
 
-function updateLikeCount(categoryId, count, liked) {
+function updateLikeCount(categoryId, liked) {
     const likeSpan = document.getElementById(`categoryActions${categoryId}`).querySelector('.like');
-    likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} ${count}`;
+    likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} `;
 
     // Перевірка на "undefined" та встановлення значення на "0", якщо потрібно
     if (localStorage.getItem('categoryLikes') === undefined) {
@@ -126,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     Object.keys(categoryLikes).forEach(categoryId => {
-        const { count, liked } = categoryLikes[categoryId];
-        updateLikeCount(categoryId, count, liked);
+        const { liked } = categoryLikes[categoryId];
+        updateLikeCount(categoryId, liked);
     });
 
     document.addEventListener('lazybeforeunveil', function (e) {
