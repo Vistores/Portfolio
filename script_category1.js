@@ -19,28 +19,21 @@ function toggleLikeCategory(categoryId, event) {
         categoryLikes[categoryId] = { liked: false };
     }
 
-    if (categoryLikes[categoryId].liked) {   
-    }
-
     categoryLikes[categoryId].liked = !categoryLikes[categoryId].liked;
 
-    updateLikeCount(categoryId, categoryLikes[categoryId].count, categoryLikes[categoryId].liked);
+    updateLikeCount(categoryId, categoryLikes[categoryId].liked);
 }
 
 function updateLikeCount(categoryId, liked) {
-    const likeSpan = document.getElementById(`categoryActions${categoryId}`).querySelector('.like');
-    likeSpan.innerHTML = `${liked ? '❤️' : '🤍'} `;
+    // Update only the liked state without modifying the count
+    categoryLikes[categoryId].liked = liked;
 
-    // Перевірка на "undefined" та встановлення значення на "0", якщо потрібно
-    if (localStorage.getItem('categoryLikes') === undefined) {
-        localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes));
-    } else {
-        localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes || {}));
-    }
+    // Save the updated categoryLikes to localStorage
+    localStorage.setItem('categoryLikes', JSON.stringify(categoryLikes || {}));
 }
 
 function openImageConfirmation(imagePath) {
-        window.open(imagePath, '_blank');
+    window.open(imagePath, '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -100,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     categories.forEach((category, index) => {
         const categoryId = index + 1;
         const categoryActions = document.getElementById(`categoryActions${categoryId}`);
-        const likeSpan = categoryActions.querySelector('.like');
         const image = category.querySelector('.category-image');
         const imagePath = image.getAttribute('data-path');
 
@@ -112,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             hideCategoryActions(categoryId);
         });
 
-        likeSpan.addEventListener('click', function (event) {
+        categoryActions.addEventListener('click', function (event) {
             event.stopPropagation();
             toggleLikeCategory(categoryId, event);
         });
